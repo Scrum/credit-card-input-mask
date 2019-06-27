@@ -12,9 +12,9 @@ $ npm install --save credit-card-input-mask
 ## Usage
 
 ```javascript
-import RestrictedInput from 'restricted-input';
+import CreditCardInputMask from 'credit-card-input-mask';
 
-const formattedCreditCardInput = new RestrictedInput({
+const formattedCreditCardInput = new CreditCardInputMask({
   element: document.querySelector('#credit-card'),
   pattern: '{{9999}} {{9999}} {{9999}} {{9999}}'
 });
