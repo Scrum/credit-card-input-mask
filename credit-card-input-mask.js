@@ -121,16 +121,26 @@ Formatter.prototype.unformat = function (options) {
   var start = options.selection.start;
   var end = options.selection.end;
   var unformattedString = '';
+  var formatCompensation = 0;
+
+  function isPatterntChar(index) {
+    var value = options.value[index - formatCompensation];
+
+    return !patternChar.isPermaChar && value != null && patternChar.value.test(value);
+  }
 
   for (i = 0; i < this.pattern.length; i++) {
     patternChar = this.pattern[i];
 
-    if (!patternChar.isPermaChar && options.value[i] != null && patternChar.value.test(options.value[i])) {
-      unformattedString += options.value[i];
+    if (isPatterntChar(i)) {
+      unformattedString += options.value[i - formatCompensation];
       continue;
     }
 
-    if (patternChar.value !== options.value[patternChar.index]) { continue; }
+    if (patternChar.value !== options.value[patternChar.index]) {
+      formatCompensation++;
+      continue;
+    }
     if (patternChar.index < options.selection.start) { start--; }
     if (patternChar.index < options.selection.end) { end--; }
   }
@@ -517,9 +527,7 @@ function BaseStrategy(options) {
 
   this._attachListeners();
 
-  if (this.inputElement.value) {
-    this._reformatInput();
-  }
+  this._formatIfNotEmpty();
 }
 
 function isSimulatedEvent(event) {
@@ -542,12 +550,18 @@ BaseStrategy.prototype.getUnformattedValue = function (forceUnformat) {
   return value;
 };
 
+BaseStrategy.prototype._formatIfNotEmpty = function () {
+  if (this.inputElement.value) {
+    this._reformatInput();
+  }
+};
+
 BaseStrategy.prototype.setPattern = function (pattern) {
   this._unformatInput();
 
   this.formatter = new Formatter(pattern);
 
-  this._reformatInput();
+  this._formatIfNotEmpty();
 };
 
 BaseStrategy.prototype._attachListeners = function () {
