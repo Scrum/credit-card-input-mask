@@ -3,6 +3,12 @@
 
 Allow restricted character sets in `input` elements.
 
+## Install
+
+```bash
+$ npm install --save credit-card-input-mask
+```
+
 ## Usage
 
 ```javascript
