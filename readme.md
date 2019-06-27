@@ -1,42 +1,7 @@
-Restricted Input
-================
+# credit-card-input-mask
+> forked from braintree/restricted-input
 
 Allow restricted character sets in `input` elements.
-
-## Demo
-
-Try the latest version of Restricted Input [here](https://braintree.github.io/restricted-input/).
-
-## Features
-
-- Disallow arbitrary chars based on patterns
-- Maintains caret position
-- Format/Update on paste
-- Works in IE9+
-
-## Development
-
-**Install dependencies**
-
-```bash
-$ npm i
-```
-
-**Watch files and run server**
-
-```bash
-$ npm run development
-```
-
-This will start a server on port `3099` which can be overridden with the `PORT` env var.
-
-**Run tests**
-
-There are unit tests:
-
-```bash
-$ npm t
-```
 
 ## Usage
 
@@ -48,6 +13,7 @@ const formattedCreditCardInput = new RestrictedInput({
   pattern: '{{9999}} {{9999}} {{9999}} {{9999}}'
 });
 ```
+> [Demo](https://scrum.github.io/credit-card-input-mask/)
 
 ## Patterns
 
@@ -90,23 +56,3 @@ Some example patterns with behavior are listed:
 | --- | ---- | ----------- |
 | element | `HTMLInputElement` or `HTMLTextAreaElement` | A valid reference to an `input` or `textarea` DOM node |
 | pattern | `String` | Pattern describing the allowed character set you wish for entry into corresponding field. See [Patterns](#patterns).|
-
-## Browser Support
-
-**Desktop**
-
-- Chrome (latest)
-- Firefox (17+)
-- Safari (8+)
-- IE11 (desktop/metro)
-- IE10 (desktop/metro)
-- IE9
-
-## Browsers Where Formatting is Turned Off Automatically
-
-Old versions of Samsung Android browsers are incompatible with formatting. These will not attempt to intercept the values and format the input.
-
-## TODO
-
-- [ ] Improve jsdoc
-- [ ] Add example guides/pages
