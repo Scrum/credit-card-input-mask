@@ -1,16 +1,16 @@
 {
-  "name": "restricted-input",
+  "name": "credit-card-input-mask",
   "version": "2.0.1",
   "description": "Restrict inputs to certain valid characters (e.g. formatting phone or card numbers)",
   "author": "Braintree <code@getbraintree.com> (https://www.braintreepayments.com/)",
   "license": "MIT",
   "main": "main.js",
-  "homepage": "https://github.com/braintree/restricted-input",
+  "homepage": "https://github.com/scrum/credit-card-input-mask",
   "repository": {
     "type": "git",
-    "url": "git://github.com/braintree/restricted-input.git"
+    "url": "git://github.com/scrum/credit-card-input-mask.git"
   },
-  "bugs": "https://github.com/braintree/restricted-input/issues",
+  "bugs": "https://github.com/scrum/credit-card-input-mask/issues",
   "keywords": [
     "input",
     "formatting",
@@ -20,7 +20,7 @@
     "restrict"
   ],
   "scripts": {
-    "build": "mkdir -p dist; browserify ./main.js -o dist/restricted-input.js -s RestrictedInput -v",
+    "build": "mkdir -p dist; browserify ./main.js -o dist/credit-card-input-mask.js -s RestrictedInput -v",
     "doc": "jsdoc -r -R README.md -d jsdoc lib/",
     "doc:watch": "npm run doc && chokidar 'lib/**/*.js' -c 'npm run doc'",
     "start": "node ./test/support/server.js",
