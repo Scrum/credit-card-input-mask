@@ -62,3 +62,7 @@ Some example patterns with behavior are listed:
 | --- | ---- | ----------- |
 | element | `HTMLInputElement` or `HTMLTextAreaElement` | A valid reference to an `input` or `textarea` DOM node |
 | pattern | `String` | Pattern describing the allowed character set you wish for entry into corresponding field. See [Patterns](#patterns).|
+
+## Related
+
+- [restricted-input](https://github.com/braintree/restricted-input) - Allow restricted character sets in `input` elements.
