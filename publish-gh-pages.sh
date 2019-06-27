@@ -13,8 +13,8 @@ git checkout gh-pages
 
 mv dist/* .
 
-git add restricted-input.js
+git add credit-card-input-mask.js
 git add index.html
-git commit -ve -m 'Update demo page for restricted-input'
+git commit -ve -m 'Update demo page for credit-card-input-mask'
 
 echo 'You can now `git push` to gh-pages!'
