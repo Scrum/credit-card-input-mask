@@ -98,6 +98,12 @@ describe("Restricted Input", function () {
       expect(input.getValue()).toBe("4111 ");
     });
 
+    it("should correctly reformat the unformatted value set", () => {
+      const input = $("#credit-card-number-with-unformated-value");
+
+      expect(input.getValue()).toBe("4111 1111 1111 1111");
+    });
+
     it("backspacing after a gap should change the value", () => {
       const input = $("#credit-card-number");
 

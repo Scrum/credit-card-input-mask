@@ -206,6 +206,16 @@ describe("Formatter", function () {
 
       expect(reformatted).toEqual(options);
     });
+
+    it("should return an unformatted value", function () {
+      const formatter = new Formatter("{{9999}} {{9999}}");
+      const options = {
+        selection: { start: 6, end: 6 },
+        value: "123456",
+      };
+
+      expect(formatter.unformat(options).value).toEqual("123456");
+    });
   });
 
   describe("simulateDeletion()", function () {

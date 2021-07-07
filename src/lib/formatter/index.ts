@@ -77,20 +77,28 @@ export class PatternFormatter {
     let start = options.selection.start;
     let end = options.selection.end;
     let unformattedString = "";
+    let formatCompensation = 0;
+
+    function isPatterntChar(patternChar: Pattern, index: number) {
+      const value = options.value[index - formatCompensation];
+
+      return (
+        typeof patternChar.value !== "string" &&
+        value != null &&
+        patternChar.value.test(value)
+      );
+    }
 
     for (let i = 0; i < this.pattern.length; i++) {
       const patternChar = this.pattern[i];
 
-      if (
-        typeof patternChar.value !== "string" &&
-        options.value[i] != null &&
-        patternChar.value.test(options.value[i])
-      ) {
-        unformattedString += options.value[i];
+      if (isPatterntChar(patternChar, i)) {
+        unformattedString += options.value[i - formatCompensation];
         continue;
       }
 
       if (patternChar.value !== options.value[patternChar.index]) {
+        formatCompensation++;
         continue;
       }
       if (patternChar.index < options.selection.start) {
