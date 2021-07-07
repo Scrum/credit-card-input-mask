@@ -22,24 +22,20 @@
         margin: 1em auto;
       }
 
-    <div class="input-wrapper">
-      <label for="credit-card-number-with-unformated-value">Card Number set unformated value and change pattern</label>
-      <input id="credit-card-number-with-unformated-value" type="tel" placeholder="4111111111111111" data-pattern="{{9999}} {{999999}} {{99999}}" />
-    </div>
-
-    <div class="input-wrapper">
-      <label for="credit-card-amex">Credit Card (amex)</label>
-      <input id="credit-card-amex" type="tel" placeholder="3782 822463 10005" data-pattern="{{9999}} {{999999}} {{99999}}" />
-    </div>
+      .input-wrapper {
+        margin-bottom: 1em;
+      }
 
       label {
         font-size: 0.7em;
       }
 
-    <div class="input-wrapper">
-      <label for="credit-card-unformatted">Credit Card (unformatted by pattern)</label>
-      <input id="credit-card-unformatted" type="tel" placeholder="4111111111111111" data-pattern="{{9999999999999999}}" />
-    </div>
+      input {
+        width: 100%;
+        font-size: 3em;
+        padding: 0.3em 0.4em;
+        margin: 0.2em 0;
+      }
 
       input[type="number"]::-webkit-outer-spin-button,
       input[type="number"]::-webkit-inner-spin-button {
@@ -86,6 +82,11 @@
           placeholder="3782 822463 10005"
           data-pattern="{{9999}} {{999999}} {{99999}}"
         />
+      </div>
+
+      <div class="input-wrapper">
+        <label for="credit-card-number-with-unformated-value">Card Number set unformated value and change pattern</label>
+        <input id="credit-card-number-with-unformated-value" type="tel" placeholder="4111111111111111" data-pattern="{{9999}} {{999999}} {{99999}}" />
       </div>
 
       <div class="input-wrapper">
