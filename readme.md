@@ -1,4 +1,5 @@
 # credit-card-input-mask
+
 > forked from braintree/restricted-input
 
 Allow restricted character sets in `input` elements.
@@ -12,13 +13,14 @@ $ npm install --save credit-card-input-mask
 ## Usage
 
 ```javascript
-import CreditCardInputMask from 'credit-card-input-mask';
+import CreditCardInputMask from "credit-card-input-mask";
 
 const formattedCreditCardInput = new CreditCardInputMask({
-  element: document.querySelector('#credit-card'),
-  pattern: '{{9999}} {{9999}} {{9999}} {{9999}}'
+  element: document.querySelector("#credit-card"),
+  pattern: "{{9999}} {{9999}} {{9999}} {{9999}}",
 });
 ```
+
 > [Demo](https://scrum.github.io/credit-card-input-mask/)
 
 ## Patterns
