@@ -7,11 +7,11 @@ git checkout master
 
 npm run build
 
-cp test/support/index.html dist/
+cp test/support/index.html dist-app/
 
 git checkout gh-pages
 
-mv dist/* .
+mv dist-app/* .
 
 git add credit-card-input-mask.js
 git add index.html
