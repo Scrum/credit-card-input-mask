@@ -37,12 +37,12 @@
         margin: 0.2em 0;
       }
 
-      input[type="number"]::-webkit-outer-spin-button,
-      input[type="number"]::-webkit-inner-spin-button {
+      input[type='number']::-webkit-outer-spin-button,
+      input[type='number']::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
       }
-      input[type="number"] {
+      input[type='number'] {
         -moz-appearance: textfield;
       }
     </style>
@@ -85,8 +85,15 @@
       </div>
 
       <div class="input-wrapper">
-        <label for="credit-card-number-with-unformated-value">Card Number set unformated value and change pattern</label>
-        <input id="credit-card-number-with-unformated-value" type="tel" placeholder="4111111111111111" data-pattern="{{9999}} {{999999}} {{99999}}" />
+        <label for="credit-card-number-with-unformated-value"
+          >Card Number set unformated value and change pattern</label
+        >
+        <input
+          id="credit-card-number-with-unformated-value"
+          type="tel"
+          placeholder="4111111111111111"
+          data-pattern="{{9999}} {{999999}} {{99999}}"
+        />
       </div>
 
       <div class="input-wrapper">
@@ -191,47 +198,16 @@
         />
       </div>
     </div>
-  </div>
 
-  <script src="credit-card-input-mask.js"></script>
-  <script>
-    var inputs = document.querySelectorAll('input');
+    <script src="credit-card-input-mask.js"></script>
+    <script>
+        var inputs = document.querySelectorAll('input');
 
-    function updateSelectionData(event) {
-      var input = event.currentTarget || event.srcElement;
+      function updateSelectionData(event) {
+        var input = event.currentTarget || event.srcElement;
 
-      input.setAttribute('data-selection-start', input.selectionStart);
-      input.setAttribute('data-selection-end', input.selectionEnd);
-    }
-
-    for (var i = 0; i < inputs.length; i++) {
-      var input = inputs[i];
-
-      var ri = new RestrictedInput({
-        element: input,
-        pattern: input.getAttribute('data-pattern') || '{{9999}} {{9999}} {{9999}} {{9999}}'
-      });
-
-      if (input.id === 'credit-card-number-with-unformated-value') {
-        input.value = '4111111111111111';
-        ri.setPattern('{{9999}} {{9999}} {{9999}} {{9999}}')
-      }
-
-      var events = [
-        'input',
-        'keypress',
-        'keyup',
-        'keydown',
-        'change',
-        'focus',
-        'blur',
-        'click'
-      ];
-
-      for (var j = 0; j < events.length; j++) {
-        var e = events[j];
-
-        input.addEventListener(e, updateSelectionData, false);
+        input.setAttribute('data-selection-start', input.selectionStart);
+        input.setAttribute('data-selection-end', input.selectionEnd);
       }
 
       for (var i = 0; i < inputs.length; i++) {
@@ -239,20 +215,23 @@
 
         var ri = new RestrictedInput({
           element: input,
-          pattern:
-            input.getAttribute("data-pattern") ||
-            "{{9999}} {{9999}} {{9999}} {{9999}}",
+          pattern: input.getAttribute('data-pattern') || '{{9999}} {{9999}} {{9999}} {{9999}}'
         });
 
+        if (input.id === 'credit-card-number-with-unformated-value') {
+          input.value = '4111111111111111';
+          ri.setPattern('{{9999}} {{9999}} {{9999}} {{9999}}')
+        }
+
         var events = [
-          "input",
-          "keypress",
-          "keyup",
-          "keydown",
-          "change",
-          "focus",
-          "blur",
-          "click",
+          'input',
+          'keypress',
+          'keyup',
+          'keydown',
+          'change',
+          'focus',
+          'blur',
+          'click'
         ];
 
         for (var j = 0; j < events.length; j++) {
@@ -261,34 +240,61 @@
           input.addEventListener(e, updateSelectionData, false);
         }
 
-        input.setAttribute("data-selection-start", 0);
-        input.setAttribute("data-selection-end", 0);
+        for (var i = 0; i < inputs.length; i++) {
+          var input = inputs[i];
 
-        (function (i, r) {
-          var toggleButton = document.getElementById(i.id + "-btn");
+          var ri = new RestrictedInput({
+            element: input,
+            pattern:
+              input.getAttribute("data-pattern") ||
+              "{{9999}} {{9999}} {{9999}} {{9999}}",
+          });
 
-          if (toggleButton) {
-            toggleButton.addEventListener(
-              "click",
-              function (event) {
-                var btn = event.currentTarget;
-                var currentState = btn.getAttribute("data-current-state");
+          var events = [
+            "input",
+            "keypress",
+            "keyup",
+            "keydown",
+            "change",
+            "focus",
+            "blur",
+            "click",
+          ];
 
-                if (currentState === "non-amex") {
-                  r.setPattern("{{9999}} {{999999}} {{99999}}");
-                  i.setAttribute("placeholder", "3782 822463 10005");
-                  btn.setAttribute("data-current-state", "amex");
-                } else {
-                  r.setPattern("{{9999}} {{9999}} {{9999}} {{9999}}");
-                  i.setAttribute("placeholder", "4111 1111 1111 1111");
-                  btn.setAttribute("data-current-state", "non-amex");
-                }
-              },
-              false
-            );
+          for (var j = 0; j < events.length; j++) {
+            var e = events[j];
+
+            input.addEventListener(e, updateSelectionData, false);
           }
-        })(input, ri);
-      }
+
+          input.setAttribute("data-selection-start", 0);
+          input.setAttribute("data-selection-end", 0);
+
+          (function (i, r) {
+            var toggleButton = document.getElementById(i.id + "-btn");
+
+            if (toggleButton) {
+              toggleButton.addEventListener(
+                "click",
+                function (event) {
+                  var btn = event.currentTarget;
+                  var currentState = btn.getAttribute("data-current-state");
+
+                  if (currentState === "non-amex") {
+                    r.setPattern("{{9999}} {{999999}} {{99999}}");
+                    i.setAttribute("placeholder", "3782 822463 10005");
+                    btn.setAttribute("data-current-state", "amex");
+                  } else {
+                    r.setPattern("{{9999}} {{9999}} {{9999}} {{9999}}");
+                    i.setAttribute("placeholder", "4111 1111 1111 1111");
+                    btn.setAttribute("data-current-state", "non-amex");
+                  }
+                },
+                false
+              );
+            }
+          })(input, ri);
+        };
     </script>
   </body>
 </html>
