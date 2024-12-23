@@ -1,7 +1,7 @@
 const ALPHA_REGEX = /[A-Za-z]/;
 const DIGIT_REGEX = /\d/;
 const WILD_REGEX = /./;
-const PLACEHOLDER_REGEX = /^[A-Za-z0-9\*]$/;
+const PLACEHOLDER_REGEX = /^[A-Za-z0-9*]$/;
 const PLACEHOLDER_PATTERN = "({{[^}]+}})";
 const PERMACHAR_REGEX = "(\\s|\\S)";
 const PATTERN_REGEX = new RegExp(
